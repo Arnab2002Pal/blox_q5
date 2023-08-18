@@ -1,0 +1,20 @@
+1. What are the issues in such a system?
+
+Transaction rollback: If there is a failure in transaction or incompleteness, managing proper rollback procedures to avoid money loss or double debits can be tricky.
+
+Concurrency: Handling concurrent money transfers from multiple users without conflicts or data corruption.
+
+Atomicity: Guaranteeing that the entire money transfer operation is treated as a single unit of work, either fully completed or not at all, to avoid inconsistencies.
+
+
+2. What can we do to mitigate some of the issues ?
+
+Idempotency: Implement or making the same request multiple times has the same effect as making it once. This prevents duplicate transactions if a request is retried. And can be done by using an unique identifier to keep a track of transaction
+
+Asynchronous Processing: Consider using asynchronous messaging patterns for money transfers, so the sender and receiver can handle the transactions independently. This reduces the chances of failure due to immediate synchronous dependencies.
+
+Error Handling: Implement proper error handling to deal with transient failures and ensure the transaction is completed eventually.
+
+
+3. Write the fixing yourself to demonstrate the mitigations.
+To demonstrate some of the mitigations, Implemented the concepts of idempotency and error handling with a basic asynchronous approach. Read the readme.txt file to understand more.
